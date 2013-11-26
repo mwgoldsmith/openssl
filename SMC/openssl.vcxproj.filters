@@ -2262,7 +2262,9 @@
     <YASM Include="crypto\vpaes-x86.asm">
       <Filter>Source Files\crypto\asm</Filter>
     </YASM>
-    <YASM Include="ms\uptable.asm" />
+    <YASM Include="ms\uptable.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="version32.rc">
