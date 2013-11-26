@@ -1193,6 +1193,9 @@
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
@@ -1374,6 +1377,9 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
@@ -1554,6 +1560,9 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
@@ -1736,6 +1745,9 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
@@ -1929,6 +1941,9 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
@@ -2124,6 +2139,9 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
@@ -2316,6 +2334,9 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
@@ -2510,6 +2531,9 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutputPath)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+)
 mkdir $(OutputPath)\include\openssl
 copy ..\include\openssl\*.h $(OutputPath)\include\openssl
 mkdir $(OutputPath)\licenses
