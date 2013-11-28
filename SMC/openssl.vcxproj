@@ -1133,41 +1133,41 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
     <TargetName>openssld</TargetName>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc32\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
     <TargetName>openssld</TargetName>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc64\</OutDir>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
     <TargetName>openssl</TargetName>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc32\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
     <TargetName>openssl</TargetName>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc64\</OutDir>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>libopenssld</TargetName>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc32\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>libopenssld</TargetName>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc64\</OutDir>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>libopenssl</TargetName>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc32\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>libopenssl</TargetName>
-    <OutDir>..\..\..\</OutDir>
+    <OutDir>..\..\..\msvc64\</OutDir>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -1188,16 +1188,16 @@
     <Lib>
       <TargetMachine>MachineX86</TargetMachine>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\msvc32\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
@@ -1372,16 +1372,16 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     <Lib>
       <TargetMachine>MachineX64</TargetMachine>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\msvc64\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
@@ -1551,20 +1551,20 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\msvc32\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\msvc32\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\msvc32\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\msvc32\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
@@ -1736,20 +1736,20 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\msvc64\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\msvc64\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\msvc64\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\msvc64\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
@@ -1936,16 +1936,16 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     </Lib>
     <Lib>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\msvc32\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
@@ -2134,16 +2134,16 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Lib>
     <Lib>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\lib\msvc64\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)\lib\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
@@ -2325,20 +2325,20 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\msvc32\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\msvc32\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\msvc32\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\msvc32\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
@@ -2522,20 +2522,20 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <OutputFile>$(OutDir)\bin\msvc64\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\msvc64\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\msvc64\$(TargetName).pdb</ProgramDatabaseFile>
+      <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
-      <ProfileGuidedDatabase>$(OutDir)\bin\msvc64\$(TargetName).pgd</ProfileGuidedDatabase>
+      <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>mkdir $(OutDir)\include\msvc
-if exist $(OutDir)\include\msvc\openssl (
-rd /s /q $(OutDir)\include\msvc\openssl
+      <Command>mkdir $(OutDir)\include
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
 )
-mkdir $(OutDir)\include\msvc\openssl
-copy ..\include\openssl\*.h $(OutDir)\include\msvc\openssl
+mkdir $(OutDir)\include\openssl
+copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
 copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     </PostBuildEvent>
