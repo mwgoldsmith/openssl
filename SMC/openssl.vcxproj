@@ -1131,22 +1131,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">
-    <TargetName>openssld</TargetName>
+    <TargetName>libopenssld</TargetName>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
     <OutDir>..\..\..\msvc32\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">
-    <TargetName>openssld</TargetName>
+    <TargetName>libopenssld</TargetName>
     <OutDir>..\..\..\msvc64\</OutDir>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">
-    <TargetName>openssl</TargetName>
+    <TargetName>libopenssl</TargetName>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
     <OutDir>..\..\..\msvc32\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">
-    <TargetName>openssl</TargetName>
+    <TargetName>libopenssl</TargetName>
     <OutDir>..\..\..\msvc64\</OutDir>
     <IntDir>$(ProjectDir)\obj\$(Configuration)\$(Platform)\</IntDir>
   </PropertyGroup>
@@ -1552,8 +1552,8 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\lib\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -1737,8 +1737,8 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\lib\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -2326,8 +2326,8 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\lib\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -2523,8 +2523,8 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
-      <ImportLibrary>$(OutDir)\lib\$(TargetName).lib</ImportLibrary>
-      <ProgramDatabaseFile>$(OutDir)\bin\$(TargetName).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
+      <ProgramDatabaseFile>$(OutDir)\lib\$(TargetName).pdb</ProgramDatabaseFile>
       <ModuleDefinitionFile>.\openssl.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
