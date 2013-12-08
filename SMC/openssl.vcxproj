@@ -1549,7 +1549,6 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
@@ -1734,7 +1733,6 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\bin\$(TargetName)$(TargetExt)</OutputFile>
       <ImportLibrary>$(OutDir)\lib\$(TargetName).dll.lib</ImportLibrary>
@@ -2321,7 +2319,6 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
@@ -2518,7 +2515,6 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <ExceptionHandling>false</ExceptionHandling>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
