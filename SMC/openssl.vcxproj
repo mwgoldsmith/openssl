@@ -1175,12 +1175,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -1193,9 +1194,6 @@
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -1204,6 +1202,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -1351,6 +1351,11 @@ perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
 )
 if not exist .\crypto\wp-mmx.asm (
 perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1359,12 +1364,13 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -1377,9 +1383,6 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -1388,6 +1391,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -1533,6 +1538,11 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1541,12 +1551,13 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -1559,9 +1570,6 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -1570,6 +1578,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -1717,6 +1727,11 @@ perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
 )
 if not exist .\crypto\wp-mmx.asm (
 perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1725,12 +1740,13 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -1743,9 +1759,6 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -1754,6 +1767,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -1899,6 +1914,11 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -1909,7 +1929,7 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -1923,6 +1943,7 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -1939,9 +1960,6 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -1950,6 +1968,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -2097,6 +2117,11 @@ perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
 )
 if not exist .\crypto\wp-mmx.asm (
 perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -2107,7 +2132,7 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -2121,6 +2146,7 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -2137,9 +2163,6 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Lib>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -2148,6 +2171,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -2293,6 +2318,11 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -2303,7 +2333,7 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -2317,6 +2347,7 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -2331,9 +2362,6 @@ perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -2342,6 +2370,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -2489,6 +2519,11 @@ perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
 )
 if not exist .\crypto\wp-mmx.asm (
 perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
@@ -2499,7 +2534,7 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;_CRT_SECURE_NO_DEPRECATE;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -2513,6 +2548,7 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
       <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -2527,9 +2563,6 @@ perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
-if exist $(OutDir)\include\openssl (
-rd /s /q $(OutDir)\include\openssl
-)
 mkdir $(OutDir)\include\openssl
 copy ..\include\openssl\*.h $(OutDir)\include\openssl
 mkdir $(OutDir)\licenses
@@ -2538,6 +2571,8 @@ copy ..\LICENSE $(OutDir)\licenses\openssl.txt</Command>
     <PreBuildEvent>
       <Command>if exist ..\include (
 rd /s /q ..\include
+cd ../
+cd $(ProjectDir)
 )
 if exist ..\crypto\opensslconf.h (
 del ..\crypto\opensslconf.h
@@ -2683,6 +2718,11 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+)
+if exist $(OutDir)\include\openssl (
+rd /s /q $(OutDir)\include\openssl
+cd ../
+cd $(ProjectDir)
 )</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
