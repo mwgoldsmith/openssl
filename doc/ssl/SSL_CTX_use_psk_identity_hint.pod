@@ -81,7 +81,7 @@ SSL_CTX_use_psk_identity_hint() and SSL_use_psk_identity_hint() return
 
 Return values from the server callback are interpreted as follows:
 
-=over
+=over 4
 
 =item > 0
 
