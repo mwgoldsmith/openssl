@@ -1178,7 +1178,7 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -1367,7 +1367,7 @@ cd $(ProjectDir)
       <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_DYNAMIC_ENGINE;_LIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -1554,7 +1554,7 @@ cd $(ProjectDir)
       <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_BN_ASM_PART_WORDS;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;RMD160_ASM;AES_ASM;VPAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -1743,7 +1743,7 @@ cd $(ProjectDir)
       <PreprocessorDefinitions>WIN32;_WINDOWS;OPENSSL_THREADS;DSO_WIN32;OPENSSL_SYSNAME_WIN32;WIN32_LEAN_AND_MEAN;L_ENDIAN;OPENSSL_IA32_SSE2;OPENSSL_BN_ASM_MONT;OPENSSL_BN_ASM_MONT5;OPENSSL_BN_ASM_GF2m;SHA1_ASM;SHA256_ASM;SHA512_ASM;MD5_ASM;AES_ASM;VPAES_ASM;BSAES_ASM;WHIRLPOOL_ASM;GHASH_ASM;OPENSSL_USE_APPLINK;OPENSSL_NO_RC5;OPENSSL_NO_MD2;OPENSSL_NO_KRB5;OPENSSL_NO_JPAKE;NO_WINDOWS_BRAINDEATH;OPENSSL_NO_STATIC_ENGINE;_USRDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
@@ -1941,7 +1941,7 @@ cd $(ProjectDir)
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
@@ -2144,7 +2144,7 @@ cd $(ProjectDir)
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
@@ -2345,7 +2345,7 @@ cd $(ProjectDir)
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
@@ -2546,7 +2546,7 @@ cd $(ProjectDir)
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
-      <AdditionalIncludeDirectories>..\;.\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\;..\;..\include\;..\crypto;..\crypto\evp;..\crypto\asn1;..\crypto\modes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ExceptionHandling>false</ExceptionHandling>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
