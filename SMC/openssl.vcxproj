@@ -1056,6 +1056,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
     </YASM>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}</ProjectGuid>
     <RootNamespace>openssl</RootNamespace>

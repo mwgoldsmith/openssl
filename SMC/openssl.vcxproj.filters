@@ -2330,4 +2330,7 @@
       <Filter>Source Files\crypto\asm-x64</Filter>
     </MASM>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
 </Project>
