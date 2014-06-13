@@ -83,8 +83,8 @@
 
 #if !(defined(VMS) || defined(__VMS)) /* VMS uses logical names instead */
 #if defined(HEADER_CRYPTLIB_H) && !defined(OPENSSLDIR)
-#define ENGINESDIR "D:\\Code_Files\\ShiftMediaCenter\\dependencies\\/lib/engines"
-#define OPENSSLDIR "D:\\Code_Files\\ShiftMediaCenter\\dependencies\\/ssl"
+#define ENGINESDIR "./lib/engines"
+#define OPENSSLDIR "./ssl"
 #endif
 #endif
 
