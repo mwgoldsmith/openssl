@@ -15,6 +15,8 @@ Global
 		Release|x64 = Release|x64
 		ReleaseDLL|Win32 = ReleaseDLL|Win32
 		ReleaseDLL|x64 = ReleaseDLL|x64
+		ReleaseLTO|Win32 = ReleaseLTO|Win32
+		ReleaseLTO|x64 = ReleaseLTO|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.Debug|Win32.ActiveCfg = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.ReleaseDLL|Win32.Build.0 = ReleaseDLL|Win32
 		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.ReleaseDLL|x64.ActiveCfg = ReleaseDLL|x64
 		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.ReleaseDLL|x64.Build.0 = ReleaseDLL|x64
+		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.ReleaseLTO|Win32.ActiveCfg = ReleaseLTO|Win32
+		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.ReleaseLTO|Win32.Build.0 = ReleaseLTO|Win32
+		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.ReleaseLTO|x64.ActiveCfg = ReleaseLTO|x64
+		{558D1ADE-D5D5-4123-AD31-32F0DBD7B6AB}.ReleaseLTO|x64.Build.0 = ReleaseLTO|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
