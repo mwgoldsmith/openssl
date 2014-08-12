@@ -708,6 +708,7 @@
     <ClCompile Include="..\ssl\ssl_sess.c" />
     <ClCompile Include="..\ssl\ssl_stat.c" />
     <ClCompile Include="..\ssl\ssl_txt.c" />
+    <ClCompile Include="..\ssl\ssl_utst.c" />
     <ClCompile Include="..\ssl\t1_clnt.c" />
     <ClCompile Include="..\ssl\t1_enc.c" />
     <ClCompile Include="..\ssl\t1_lib.c" />
