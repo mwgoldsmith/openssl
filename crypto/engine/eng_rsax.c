@@ -434,10 +434,10 @@ static int mod_exp_pre_compute_data_512(UINT64 *m, struct mod_ctx_512 *data)
     BN_lshift(&two_512, BN_value_one(), 512);
 
     if (0 == (m[7] & 0x8000000000000000)) {
-        goto err;
+        exit(1);
     }
     if (0 == (m[0] & 0x1)) {    /* Odd modulus required for Mont */
-        goto err;
+        exit(1);
     }
 
     /* Precompute m1 */

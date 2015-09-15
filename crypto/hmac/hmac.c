@@ -72,6 +72,16 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
     unsigned char pad[HMAC_MAX_MD_CBLOCK];
 
 #ifdef OPENSSL_FIPS
+    /* If FIPS mode switch to approved implementation if possible */
+    if (FIPS_mode()) {
+        const EVP_MD *fipsmd;
+        if (md) {
+            fipsmd = FIPS_get_digestbynid(EVP_MD_type(md));
+            if (fipsmd)
+                md = fipsmd;
+        }
+    }
+
     if (FIPS_mode()) {
         /* If we have an ENGINE need to allow non FIPS */
         if ((impl || ctx->i_ctx.engine)
@@ -87,18 +97,12 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
             return FIPS_hmac_init_ex(ctx, key, len, md, NULL);
     }
 #endif
-    /* If we are changing MD then we must have a key */
-    if (md != NULL && md != ctx->md && (key == NULL || len < 0))
-        return 0;
 
     if (md != NULL) {
         reset = 1;
         ctx->md = md;
-    } else if (ctx->md) {
+    } else
         md = ctx->md;
-    } else {
-        return 0;
-    }
 
     if (key != NULL) {
         reset = 1;
@@ -113,8 +117,7 @@ int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
                                     &ctx->key_length))
                 goto err;
         } else {
-            if (len < 0 || len > (int)sizeof(ctx->key))
-                return 0;
+            OPENSSL_assert(len >= 0 && len <= (int)sizeof(ctx->key));
             memcpy(ctx->key, key, len);
             ctx->key_length = len;
         }
@@ -158,9 +161,6 @@ int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, size_t len)
     if (FIPS_mode() && !ctx->i_ctx.engine)
         return FIPS_hmac_update(ctx, data, len);
 #endif
-    if (!ctx->md)
-        return 0;
-
     return EVP_DigestUpdate(&ctx->md_ctx, data, len);
 }
 
@@ -172,9 +172,6 @@ int HMAC_Final(HMAC_CTX *ctx, unsigned char *md, unsigned int *len)
     if (FIPS_mode() && !ctx->i_ctx.engine)
         return FIPS_hmac_final(ctx, md, len);
 #endif
-
-    if (!ctx->md)
-        goto err;
 
     if (!EVP_DigestFinal_ex(&ctx->md_ctx, buf, &i))
         goto err;
@@ -194,7 +191,6 @@ void HMAC_CTX_init(HMAC_CTX *ctx)
     EVP_MD_CTX_init(&ctx->i_ctx);
     EVP_MD_CTX_init(&ctx->o_ctx);
     EVP_MD_CTX_init(&ctx->md_ctx);
-    ctx->md = NULL;
 }
 
 int HMAC_CTX_copy(HMAC_CTX *dctx, HMAC_CTX *sctx)
@@ -246,7 +242,6 @@ unsigned char *HMAC(const EVP_MD *evp_md, const void *key, int key_len,
     HMAC_CTX_cleanup(&c);
     return md;
  err:
-    HMAC_CTX_cleanup(&c);
     return NULL;
 }
 

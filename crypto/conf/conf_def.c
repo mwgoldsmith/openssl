@@ -585,11 +585,7 @@ static int str_copy(CONF *conf, char *section, char **pto, char *from)
                 CONFerr(CONF_F_STR_COPY, CONF_R_VARIABLE_HAS_NO_VALUE);
                 goto err;
             }
-            if (!BUF_MEM_grow_clean(buf,
-                        (strlen(p) + buf->length - (e - from)))) {
-                CONFerr(CONF_F_STR_COPY, ERR_R_MALLOC_FAILURE);
-                goto err;
-            }
+            BUF_MEM_grow_clean(buf, (strlen(p) + buf->length - (e - from)));
             while (*p)
                 buf->data[to++] = *(p++);
 

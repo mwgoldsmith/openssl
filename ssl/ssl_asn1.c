@@ -421,9 +421,7 @@ SSL_SESSION *d2i_SSL_SESSION(SSL_SESSION **a, const unsigned char **pp,
         id = 0x02000000L |
             ((unsigned long)os.data[0] << 16L) |
             ((unsigned long)os.data[1] << 8L) | (unsigned long)os.data[2];
-    } else if ((ssl_version >> 8) == SSL3_VERSION_MAJOR
-        || (ssl_version >> 8) == DTLS1_VERSION_MAJOR
-        || ssl_version == DTLS1_BAD_VER) {
+    } else if ((ssl_version >> 8) >= SSL3_VERSION_MAJOR) {
         if (os.length != 2) {
             c.error = SSL_R_CIPHER_CODE_WRONG_LENGTH;
             c.line = __LINE__;
