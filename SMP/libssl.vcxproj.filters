@@ -25,6 +25,9 @@
     <Filter Include="Header Files\include\ssl">
       <UniqueIdentifier>{e73c68f7-13f7-4b80-98ce-f9fa1309dea8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\include\crypto">
+      <UniqueIdentifier>{0480a567-87be-4d2a-85bb-775af257c1eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ssl\d1_meth.c">
@@ -425,6 +428,9 @@
     <ClInclude Include="crypto\opensslconf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\crypto\constant_time_locl.h">
+      <Filter>Header Files\include\crypto</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -435,7 +441,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="libssl.rc">
+    <ResourceCompile Include="libopenssl.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

@@ -109,6 +109,7 @@
     <ClCompile Include="..\ssl\tls_srp.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\crypto\constant_time_locl.h" />
     <ClInclude Include="..\e_os.h" />
     <ClInclude Include="..\include\openssl\aes.h" />
     <ClInclude Include="..\include\openssl\asn1.h" />
@@ -201,13 +202,15 @@
     <None Include="libssl.def" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="libssl.rc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    <ResourceCompile Include="libopenssl.rc">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseDLLStaticDeps|Win32'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DebugDLLStaticDeps|Win32'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseDLLStaticDeps|x64'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DebugDLLStaticDeps|x64'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|x64'">SSL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -542,70 +545,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
-if not exist .\crypto\x86cpuid.asm (
-perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
-)
-if not exist .\crypto\md5-586.asm (
-perl ..\crypto\md5\asm\md5-586.pl win32n %FLAGC% &gt;.\crypto\md5-586.asm
-)
-if not exist .\crypto\sha1-586.asm (
-perl ..\crypto\sha\asm\sha1-586.pl win32n %FLAGC% &gt;.\crypto\sha1-586.asm
-)
-if not exist .\crypto\sha256-586.asm (
-perl ..\crypto\sha\asm\sha256-586.pl win32n %FLAGC% &gt;.\crypto\sha256-586.asm
-)
-if not exist .\crypto\sha512-586.asm (
-perl ..\crypto\sha\asm\sha512-586.pl win32n %FLAGC% &gt;.\crypto\sha512-586.asm
-)
-if not exist .\crypto\rmd-586.asm (
-perl ..\crypto\ripemd\asm\rmd-586.pl win32n %FLAGC% &gt;.\crypto\rmd-586.asm
-)
-if not exist .\crypto\des-586.asm (
-perl ..\crypto\des\asm\des-586.pl win32n %FLAGC% &gt;.\crypto\des-586.asm
-)
-if not exist .\crypto\crypt586.asm (
-perl ..\crypto\des\asm\crypt586.pl win32n %FLAGC% &gt;.\crypto\crypt586.asm
-)
-if not exist .\crypto\rc4-586.asm (
-perl ..\crypto\rc4\asm\rc4-586.pl win32n %FLAGC% &gt;.\crypto\rc4-586.asm
-)
-if not exist .\crypto\bf-586.asm (
-perl ..\crypto\bf\asm\bf-586.pl win32n %FLAGC% &gt;.\crypto\bf-586.asm
-)
-if not exist .\crypto\cast-586.asm (
-perl ..\crypto\cast\asm\cast-586.pl win32n %FLAGC% &gt;.\crypto\cast-586.asm
-)
-if not exist .\crypto\aes-586.asm (
-perl ..\crypto\aes\asm\aes-586.pl win32n %FLAGC% &gt;.\crypto\aes-586.asm
-)
-if not exist .\crypto\vpaes-x86.asm (
-perl ..\crypto\aes\asm\vpaes-x86.pl win32n %FLAGC% &gt;.\crypto\vpaes-x86.asm
-)
-if not exist .\crypto\aesni-x86.asm (
-perl ..\crypto\aes\asm\aesni-x86.pl win32n %FLAGC% &gt;.\crypto\aesni-x86.asm
-)
-if not exist .\crypto\cmll-x86.asm (
-perl ..\crypto\camellia\asm\cmll-x86.pl win32n %FLAGC% &gt;.\crypto\cmll-x86.asm
-)
-if not exist .\crypto\ghash-x86.asm (
-perl ..\crypto\modes\asm\ghash-x86.pl win32n %FLAGC% &gt;.\crypto\ghash-x86.asm
-)
-if not exist .\crypto\bn-586.asm (
-perl ..\crypto\bn\asm\bn-586.pl win32n %FLAGC% &gt;.\crypto\bn-586.asm
-)
-if not exist .\crypto\co-586.asm (
-perl ..\crypto\bn\asm\co-586.pl win32n %FLAGC% &gt;.\crypto\co-586.asm
-)
-if not exist .\crypto\x86-mont.asm (
-perl ..\crypto\bn\asm\x86-mont.pl win32n %FLAGC% &gt;.\crypto\x86-mont.asm
-)
-if not exist .\crypto\x86-gf2m.asm (
-perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
-)
-if not exist .\crypto\wp-mmx.asm (
-perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -731,68 +670,6 @@ copy ..\ssl\ssl2.h ..\include\openssl
 copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
-)
-
-if not exist .\ms\uptable.asm (
-mkdir .\ms
-perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
-)
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
-)
-if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
-)
-if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
-)
-if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
-)
-if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
-)
-if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
-)
-if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
-)
-if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
-)
-if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
-)
-if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
-)
-if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
-)
-if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
-)
-if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
-)
-if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
-)
-if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
-)
-if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
-)
-if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
-)
-if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -922,70 +799,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
-if not exist .\crypto\x86cpuid.asm (
-perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
-)
-if not exist .\crypto\md5-586.asm (
-perl ..\crypto\md5\asm\md5-586.pl win32n %FLAGC% &gt;.\crypto\md5-586.asm
-)
-if not exist .\crypto\sha1-586.asm (
-perl ..\crypto\sha\asm\sha1-586.pl win32n %FLAGC% &gt;.\crypto\sha1-586.asm
-)
-if not exist .\crypto\sha256-586.asm (
-perl ..\crypto\sha\asm\sha256-586.pl win32n %FLAGC% &gt;.\crypto\sha256-586.asm
-)
-if not exist .\crypto\sha512-586.asm (
-perl ..\crypto\sha\asm\sha512-586.pl win32n %FLAGC% &gt;.\crypto\sha512-586.asm
-)
-if not exist .\crypto\rmd-586.asm (
-perl ..\crypto\ripemd\asm\rmd-586.pl win32n %FLAGC% &gt;.\crypto\rmd-586.asm
-)
-if not exist .\crypto\des-586.asm (
-perl ..\crypto\des\asm\des-586.pl win32n %FLAGC% &gt;.\crypto\des-586.asm
-)
-if not exist .\crypto\crypt586.asm (
-perl ..\crypto\des\asm\crypt586.pl win32n %FLAGC% &gt;.\crypto\crypt586.asm
-)
-if not exist .\crypto\rc4-586.asm (
-perl ..\crypto\rc4\asm\rc4-586.pl win32n %FLAGC% &gt;.\crypto\rc4-586.asm
-)
-if not exist .\crypto\bf-586.asm (
-perl ..\crypto\bf\asm\bf-586.pl win32n %FLAGC% &gt;.\crypto\bf-586.asm
-)
-if not exist .\crypto\cast-586.asm (
-perl ..\crypto\cast\asm\cast-586.pl win32n %FLAGC% &gt;.\crypto\cast-586.asm
-)
-if not exist .\crypto\aes-586.asm (
-perl ..\crypto\aes\asm\aes-586.pl win32n %FLAGC% &gt;.\crypto\aes-586.asm
-)
-if not exist .\crypto\vpaes-x86.asm (
-perl ..\crypto\aes\asm\vpaes-x86.pl win32n %FLAGC% &gt;.\crypto\vpaes-x86.asm
-)
-if not exist .\crypto\aesni-x86.asm (
-perl ..\crypto\aes\asm\aesni-x86.pl win32n %FLAGC% &gt;.\crypto\aesni-x86.asm
-)
-if not exist .\crypto\cmll-x86.asm (
-perl ..\crypto\camellia\asm\cmll-x86.pl win32n %FLAGC% &gt;.\crypto\cmll-x86.asm
-)
-if not exist .\crypto\ghash-x86.asm (
-perl ..\crypto\modes\asm\ghash-x86.pl win32n %FLAGC% &gt;.\crypto\ghash-x86.asm
-)
-if not exist .\crypto\bn-586.asm (
-perl ..\crypto\bn\asm\bn-586.pl win32n %FLAGC% &gt;.\crypto\bn-586.asm
-)
-if not exist .\crypto\co-586.asm (
-perl ..\crypto\bn\asm\co-586.pl win32n %FLAGC% &gt;.\crypto\co-586.asm
-)
-if not exist .\crypto\x86-mont.asm (
-perl ..\crypto\bn\asm\x86-mont.pl win32n %FLAGC% &gt;.\crypto\x86-mont.asm
-)
-if not exist .\crypto\x86-gf2m.asm (
-perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
-)
-if not exist .\crypto\wp-mmx.asm (
-perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -1114,70 +927,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
-if not exist .\crypto\x86cpuid.asm (
-perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
-)
-if not exist .\crypto\md5-586.asm (
-perl ..\crypto\md5\asm\md5-586.pl win32n %FLAGC% &gt;.\crypto\md5-586.asm
-)
-if not exist .\crypto\sha1-586.asm (
-perl ..\crypto\sha\asm\sha1-586.pl win32n %FLAGC% &gt;.\crypto\sha1-586.asm
-)
-if not exist .\crypto\sha256-586.asm (
-perl ..\crypto\sha\asm\sha256-586.pl win32n %FLAGC% &gt;.\crypto\sha256-586.asm
-)
-if not exist .\crypto\sha512-586.asm (
-perl ..\crypto\sha\asm\sha512-586.pl win32n %FLAGC% &gt;.\crypto\sha512-586.asm
-)
-if not exist .\crypto\rmd-586.asm (
-perl ..\crypto\ripemd\asm\rmd-586.pl win32n %FLAGC% &gt;.\crypto\rmd-586.asm
-)
-if not exist .\crypto\des-586.asm (
-perl ..\crypto\des\asm\des-586.pl win32n %FLAGC% &gt;.\crypto\des-586.asm
-)
-if not exist .\crypto\crypt586.asm (
-perl ..\crypto\des\asm\crypt586.pl win32n %FLAGC% &gt;.\crypto\crypt586.asm
-)
-if not exist .\crypto\rc4-586.asm (
-perl ..\crypto\rc4\asm\rc4-586.pl win32n %FLAGC% &gt;.\crypto\rc4-586.asm
-)
-if not exist .\crypto\bf-586.asm (
-perl ..\crypto\bf\asm\bf-586.pl win32n %FLAGC% &gt;.\crypto\bf-586.asm
-)
-if not exist .\crypto\cast-586.asm (
-perl ..\crypto\cast\asm\cast-586.pl win32n %FLAGC% &gt;.\crypto\cast-586.asm
-)
-if not exist .\crypto\aes-586.asm (
-perl ..\crypto\aes\asm\aes-586.pl win32n %FLAGC% &gt;.\crypto\aes-586.asm
-)
-if not exist .\crypto\vpaes-x86.asm (
-perl ..\crypto\aes\asm\vpaes-x86.pl win32n %FLAGC% &gt;.\crypto\vpaes-x86.asm
-)
-if not exist .\crypto\aesni-x86.asm (
-perl ..\crypto\aes\asm\aesni-x86.pl win32n %FLAGC% &gt;.\crypto\aesni-x86.asm
-)
-if not exist .\crypto\cmll-x86.asm (
-perl ..\crypto\camellia\asm\cmll-x86.pl win32n %FLAGC% &gt;.\crypto\cmll-x86.asm
-)
-if not exist .\crypto\ghash-x86.asm (
-perl ..\crypto\modes\asm\ghash-x86.pl win32n %FLAGC% &gt;.\crypto\ghash-x86.asm
-)
-if not exist .\crypto\bn-586.asm (
-perl ..\crypto\bn\asm\bn-586.pl win32n %FLAGC% &gt;.\crypto\bn-586.asm
-)
-if not exist .\crypto\co-586.asm (
-perl ..\crypto\bn\asm\co-586.pl win32n %FLAGC% &gt;.\crypto\co-586.asm
-)
-if not exist .\crypto\x86-mont.asm (
-perl ..\crypto\bn\asm\x86-mont.pl win32n %FLAGC% &gt;.\crypto\x86-mont.asm
-)
-if not exist .\crypto\x86-gf2m.asm (
-perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
-)
-if not exist .\crypto\wp-mmx.asm (
-perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -1305,68 +1054,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-
-if not exist .\ms\uptable.asm (
-mkdir .\ms
-perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
-)
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
-)
-if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
-)
-if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
-)
-if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
-)
-if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
-)
-if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
-)
-if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
-)
-if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
-)
-if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
-)
-if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
-)
-if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
-)
-if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
-)
-if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
-)
-if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
-)
-if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
-)
-if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
-)
-if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
-)
-if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -1493,68 +1180,6 @@ copy ..\ssl\ssl2.h ..\include\openssl
 copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
-)
-
-if not exist .\ms\uptable.asm (
-mkdir .\ms
-perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
-)
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
-)
-if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
-)
-if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
-)
-if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
-)
-if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
-)
-if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
-)
-if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
-)
-if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
-)
-if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
-)
-if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
-)
-if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
-)
-if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
-)
-if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
-)
-if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
-)
-if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
-)
-if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
-)
-if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
-)
-if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -1697,70 +1322,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
-if not exist .\crypto\x86cpuid.asm (
-perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
-)
-if not exist .\crypto\md5-586.asm (
-perl ..\crypto\md5\asm\md5-586.pl win32n %FLAGC% &gt;.\crypto\md5-586.asm
-)
-if not exist .\crypto\sha1-586.asm (
-perl ..\crypto\sha\asm\sha1-586.pl win32n %FLAGC% &gt;.\crypto\sha1-586.asm
-)
-if not exist .\crypto\sha256-586.asm (
-perl ..\crypto\sha\asm\sha256-586.pl win32n %FLAGC% &gt;.\crypto\sha256-586.asm
-)
-if not exist .\crypto\sha512-586.asm (
-perl ..\crypto\sha\asm\sha512-586.pl win32n %FLAGC% &gt;.\crypto\sha512-586.asm
-)
-if not exist .\crypto\rmd-586.asm (
-perl ..\crypto\ripemd\asm\rmd-586.pl win32n %FLAGC% &gt;.\crypto\rmd-586.asm
-)
-if not exist .\crypto\des-586.asm (
-perl ..\crypto\des\asm\des-586.pl win32n %FLAGC% &gt;.\crypto\des-586.asm
-)
-if not exist .\crypto\crypt586.asm (
-perl ..\crypto\des\asm\crypt586.pl win32n %FLAGC% &gt;.\crypto\crypt586.asm
-)
-if not exist .\crypto\rc4-586.asm (
-perl ..\crypto\rc4\asm\rc4-586.pl win32n %FLAGC% &gt;.\crypto\rc4-586.asm
-)
-if not exist .\crypto\bf-586.asm (
-perl ..\crypto\bf\asm\bf-586.pl win32n %FLAGC% &gt;.\crypto\bf-586.asm
-)
-if not exist .\crypto\cast-586.asm (
-perl ..\crypto\cast\asm\cast-586.pl win32n %FLAGC% &gt;.\crypto\cast-586.asm
-)
-if not exist .\crypto\aes-586.asm (
-perl ..\crypto\aes\asm\aes-586.pl win32n %FLAGC% &gt;.\crypto\aes-586.asm
-)
-if not exist .\crypto\vpaes-x86.asm (
-perl ..\crypto\aes\asm\vpaes-x86.pl win32n %FLAGC% &gt;.\crypto\vpaes-x86.asm
-)
-if not exist .\crypto\aesni-x86.asm (
-perl ..\crypto\aes\asm\aesni-x86.pl win32n %FLAGC% &gt;.\crypto\aesni-x86.asm
-)
-if not exist .\crypto\cmll-x86.asm (
-perl ..\crypto\camellia\asm\cmll-x86.pl win32n %FLAGC% &gt;.\crypto\cmll-x86.asm
-)
-if not exist .\crypto\ghash-x86.asm (
-perl ..\crypto\modes\asm\ghash-x86.pl win32n %FLAGC% &gt;.\crypto\ghash-x86.asm
-)
-if not exist .\crypto\bn-586.asm (
-perl ..\crypto\bn\asm\bn-586.pl win32n %FLAGC% &gt;.\crypto\bn-586.asm
-)
-if not exist .\crypto\co-586.asm (
-perl ..\crypto\bn\asm\co-586.pl win32n %FLAGC% &gt;.\crypto\co-586.asm
-)
-if not exist .\crypto\x86-mont.asm (
-perl ..\crypto\bn\asm\x86-mont.pl win32n %FLAGC% &gt;.\crypto\x86-mont.asm
-)
-if not exist .\crypto\x86-gf2m.asm (
-perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
-)
-if not exist .\crypto\wp-mmx.asm (
-perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -1901,70 +1462,6 @@ copy ..\ssl\ssl2.h ..\include\openssl
 copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
-)
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
-if not exist .\crypto\x86cpuid.asm (
-perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
-)
-if not exist .\crypto\md5-586.asm (
-perl ..\crypto\md5\asm\md5-586.pl win32n %FLAGC% &gt;.\crypto\md5-586.asm
-)
-if not exist .\crypto\sha1-586.asm (
-perl ..\crypto\sha\asm\sha1-586.pl win32n %FLAGC% &gt;.\crypto\sha1-586.asm
-)
-if not exist .\crypto\sha256-586.asm (
-perl ..\crypto\sha\asm\sha256-586.pl win32n %FLAGC% &gt;.\crypto\sha256-586.asm
-)
-if not exist .\crypto\sha512-586.asm (
-perl ..\crypto\sha\asm\sha512-586.pl win32n %FLAGC% &gt;.\crypto\sha512-586.asm
-)
-if not exist .\crypto\rmd-586.asm (
-perl ..\crypto\ripemd\asm\rmd-586.pl win32n %FLAGC% &gt;.\crypto\rmd-586.asm
-)
-if not exist .\crypto\des-586.asm (
-perl ..\crypto\des\asm\des-586.pl win32n %FLAGC% &gt;.\crypto\des-586.asm
-)
-if not exist .\crypto\crypt586.asm (
-perl ..\crypto\des\asm\crypt586.pl win32n %FLAGC% &gt;.\crypto\crypt586.asm
-)
-if not exist .\crypto\rc4-586.asm (
-perl ..\crypto\rc4\asm\rc4-586.pl win32n %FLAGC% &gt;.\crypto\rc4-586.asm
-)
-if not exist .\crypto\bf-586.asm (
-perl ..\crypto\bf\asm\bf-586.pl win32n %FLAGC% &gt;.\crypto\bf-586.asm
-)
-if not exist .\crypto\cast-586.asm (
-perl ..\crypto\cast\asm\cast-586.pl win32n %FLAGC% &gt;.\crypto\cast-586.asm
-)
-if not exist .\crypto\aes-586.asm (
-perl ..\crypto\aes\asm\aes-586.pl win32n %FLAGC% &gt;.\crypto\aes-586.asm
-)
-if not exist .\crypto\vpaes-x86.asm (
-perl ..\crypto\aes\asm\vpaes-x86.pl win32n %FLAGC% &gt;.\crypto\vpaes-x86.asm
-)
-if not exist .\crypto\aesni-x86.asm (
-perl ..\crypto\aes\asm\aesni-x86.pl win32n %FLAGC% &gt;.\crypto\aesni-x86.asm
-)
-if not exist .\crypto\cmll-x86.asm (
-perl ..\crypto\camellia\asm\cmll-x86.pl win32n %FLAGC% &gt;.\crypto\cmll-x86.asm
-)
-if not exist .\crypto\ghash-x86.asm (
-perl ..\crypto\modes\asm\ghash-x86.pl win32n %FLAGC% &gt;.\crypto\ghash-x86.asm
-)
-if not exist .\crypto\bn-586.asm (
-perl ..\crypto\bn\asm\bn-586.pl win32n %FLAGC% &gt;.\crypto\bn-586.asm
-)
-if not exist .\crypto\co-586.asm (
-perl ..\crypto\bn\asm\co-586.pl win32n %FLAGC% &gt;.\crypto\co-586.asm
-)
-if not exist .\crypto\x86-mont.asm (
-perl ..\crypto\bn\asm\x86-mont.pl win32n %FLAGC% &gt;.\crypto\x86-mont.asm
-)
-if not exist .\crypto\x86-gf2m.asm (
-perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
-)
-if not exist .\crypto\wp-mmx.asm (
-perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -2107,68 +1604,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-
-if not exist .\ms\uptable.asm (
-mkdir .\ms
-perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
-)
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
-)
-if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
-)
-if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
-)
-if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
-)
-if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
-)
-if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
-)
-if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
-)
-if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
-)
-if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
-)
-if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
-)
-if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
-)
-if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
-)
-if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
-)
-if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
-)
-if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
-)
-if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
-)
-if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
-)
-if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -2310,68 +1745,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-
-if not exist .\ms\uptable.asm (
-mkdir .\ms
-perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
-)
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
-)
-if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
-)
-if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
-)
-if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
-)
-if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
-)
-if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
-)
-if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
-)
-if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
-)
-if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
-)
-if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
-)
-if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
-)
-if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
-)
-if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
-)
-if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
-)
-if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
-)
-if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
-)
-if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
-)
-if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -2510,70 +1883,6 @@ copy ..\ssl\ssl2.h ..\include\openssl
 copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
-)
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
-if not exist .\crypto\x86cpuid.asm (
-perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
-)
-if not exist .\crypto\md5-586.asm (
-perl ..\crypto\md5\asm\md5-586.pl win32n %FLAGC% &gt;.\crypto\md5-586.asm
-)
-if not exist .\crypto\sha1-586.asm (
-perl ..\crypto\sha\asm\sha1-586.pl win32n %FLAGC% &gt;.\crypto\sha1-586.asm
-)
-if not exist .\crypto\sha256-586.asm (
-perl ..\crypto\sha\asm\sha256-586.pl win32n %FLAGC% &gt;.\crypto\sha256-586.asm
-)
-if not exist .\crypto\sha512-586.asm (
-perl ..\crypto\sha\asm\sha512-586.pl win32n %FLAGC% &gt;.\crypto\sha512-586.asm
-)
-if not exist .\crypto\rmd-586.asm (
-perl ..\crypto\ripemd\asm\rmd-586.pl win32n %FLAGC% &gt;.\crypto\rmd-586.asm
-)
-if not exist .\crypto\des-586.asm (
-perl ..\crypto\des\asm\des-586.pl win32n %FLAGC% &gt;.\crypto\des-586.asm
-)
-if not exist .\crypto\crypt586.asm (
-perl ..\crypto\des\asm\crypt586.pl win32n %FLAGC% &gt;.\crypto\crypt586.asm
-)
-if not exist .\crypto\rc4-586.asm (
-perl ..\crypto\rc4\asm\rc4-586.pl win32n %FLAGC% &gt;.\crypto\rc4-586.asm
-)
-if not exist .\crypto\bf-586.asm (
-perl ..\crypto\bf\asm\bf-586.pl win32n %FLAGC% &gt;.\crypto\bf-586.asm
-)
-if not exist .\crypto\cast-586.asm (
-perl ..\crypto\cast\asm\cast-586.pl win32n %FLAGC% &gt;.\crypto\cast-586.asm
-)
-if not exist .\crypto\aes-586.asm (
-perl ..\crypto\aes\asm\aes-586.pl win32n %FLAGC% &gt;.\crypto\aes-586.asm
-)
-if not exist .\crypto\vpaes-x86.asm (
-perl ..\crypto\aes\asm\vpaes-x86.pl win32n %FLAGC% &gt;.\crypto\vpaes-x86.asm
-)
-if not exist .\crypto\aesni-x86.asm (
-perl ..\crypto\aes\asm\aesni-x86.pl win32n %FLAGC% &gt;.\crypto\aesni-x86.asm
-)
-if not exist .\crypto\cmll-x86.asm (
-perl ..\crypto\camellia\asm\cmll-x86.pl win32n %FLAGC% &gt;.\crypto\cmll-x86.asm
-)
-if not exist .\crypto\ghash-x86.asm (
-perl ..\crypto\modes\asm\ghash-x86.pl win32n %FLAGC% &gt;.\crypto\ghash-x86.asm
-)
-if not exist .\crypto\bn-586.asm (
-perl ..\crypto\bn\asm\bn-586.pl win32n %FLAGC% &gt;.\crypto\bn-586.asm
-)
-if not exist .\crypto\co-586.asm (
-perl ..\crypto\bn\asm\co-586.pl win32n %FLAGC% &gt;.\crypto\co-586.asm
-)
-if not exist .\crypto\x86-mont.asm (
-perl ..\crypto\bn\asm\x86-mont.pl win32n %FLAGC% &gt;.\crypto\x86-mont.asm
-)
-if not exist .\crypto\x86-gf2m.asm (
-perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
-)
-if not exist .\crypto\wp-mmx.asm (
-perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -2714,70 +2023,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
-if not exist .\crypto\x86cpuid.asm (
-perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
-)
-if not exist .\crypto\md5-586.asm (
-perl ..\crypto\md5\asm\md5-586.pl win32n %FLAGC% &gt;.\crypto\md5-586.asm
-)
-if not exist .\crypto\sha1-586.asm (
-perl ..\crypto\sha\asm\sha1-586.pl win32n %FLAGC% &gt;.\crypto\sha1-586.asm
-)
-if not exist .\crypto\sha256-586.asm (
-perl ..\crypto\sha\asm\sha256-586.pl win32n %FLAGC% &gt;.\crypto\sha256-586.asm
-)
-if not exist .\crypto\sha512-586.asm (
-perl ..\crypto\sha\asm\sha512-586.pl win32n %FLAGC% &gt;.\crypto\sha512-586.asm
-)
-if not exist .\crypto\rmd-586.asm (
-perl ..\crypto\ripemd\asm\rmd-586.pl win32n %FLAGC% &gt;.\crypto\rmd-586.asm
-)
-if not exist .\crypto\des-586.asm (
-perl ..\crypto\des\asm\des-586.pl win32n %FLAGC% &gt;.\crypto\des-586.asm
-)
-if not exist .\crypto\crypt586.asm (
-perl ..\crypto\des\asm\crypt586.pl win32n %FLAGC% &gt;.\crypto\crypt586.asm
-)
-if not exist .\crypto\rc4-586.asm (
-perl ..\crypto\rc4\asm\rc4-586.pl win32n %FLAGC% &gt;.\crypto\rc4-586.asm
-)
-if not exist .\crypto\bf-586.asm (
-perl ..\crypto\bf\asm\bf-586.pl win32n %FLAGC% &gt;.\crypto\bf-586.asm
-)
-if not exist .\crypto\cast-586.asm (
-perl ..\crypto\cast\asm\cast-586.pl win32n %FLAGC% &gt;.\crypto\cast-586.asm
-)
-if not exist .\crypto\aes-586.asm (
-perl ..\crypto\aes\asm\aes-586.pl win32n %FLAGC% &gt;.\crypto\aes-586.asm
-)
-if not exist .\crypto\vpaes-x86.asm (
-perl ..\crypto\aes\asm\vpaes-x86.pl win32n %FLAGC% &gt;.\crypto\vpaes-x86.asm
-)
-if not exist .\crypto\aesni-x86.asm (
-perl ..\crypto\aes\asm\aesni-x86.pl win32n %FLAGC% &gt;.\crypto\aesni-x86.asm
-)
-if not exist .\crypto\cmll-x86.asm (
-perl ..\crypto\camellia\asm\cmll-x86.pl win32n %FLAGC% &gt;.\crypto\cmll-x86.asm
-)
-if not exist .\crypto\ghash-x86.asm (
-perl ..\crypto\modes\asm\ghash-x86.pl win32n %FLAGC% &gt;.\crypto\ghash-x86.asm
-)
-if not exist .\crypto\bn-586.asm (
-perl ..\crypto\bn\asm\bn-586.pl win32n %FLAGC% &gt;.\crypto\bn-586.asm
-)
-if not exist .\crypto\co-586.asm (
-perl ..\crypto\bn\asm\co-586.pl win32n %FLAGC% &gt;.\crypto\co-586.asm
-)
-if not exist .\crypto\x86-mont.asm (
-perl ..\crypto\bn\asm\x86-mont.pl win32n %FLAGC% &gt;.\crypto\x86-mont.asm
-)
-if not exist .\crypto\x86-gf2m.asm (
-perl ..\crypto\bn\asm\x86-gf2m.pl win32n %FLAGC% &gt;.\crypto\x86-gf2m.asm
-)
-if not exist .\crypto\wp-mmx.asm (
-perl ..\crypto\whrlpool\asm\wp-mmx.pl win32n %FLAGC% &gt;.\crypto\wp-mmx.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -2916,68 +2161,6 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-
-if not exist .\ms\uptable.asm (
-mkdir .\ms
-perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
-)
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
-)
-if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
-)
-if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
-)
-if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
-)
-if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
-)
-if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
-)
-if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
-)
-if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
-)
-if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
-)
-if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
-)
-if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
-)
-if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
-)
-if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
-)
-if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
-)
-if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
-)
-if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
-)
-if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
-)
-if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
-)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -3115,68 +2298,6 @@ copy ..\ssl\ssl2.h ..\include\openssl
 copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
-)
-
-if not exist .\ms\uptable.asm (
-mkdir .\ms
-perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
-)
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
-)
-if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
-)
-if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
-)
-if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
-)
-if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
-)
-if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
-)
-if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
-)
-if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
-)
-if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
-)
-if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
-)
-if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
-)
-if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
-)
-if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
-)
-if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
-)
-if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
-)
-if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
-)
-if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
-)
-if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl

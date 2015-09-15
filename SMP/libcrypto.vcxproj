@@ -669,6 +669,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\crypto\constant_time_locl.h" />
     <ClInclude Include="..\e_os.h" />
     <ClInclude Include="..\crypto\cryptlib.h" />
     <ClInclude Include="..\crypto\o_dir.h" />
@@ -909,139 +910,158 @@
     </YASM>
   </ItemGroup>
   <ItemGroup>
-    <MASM Include="crypto\aes-x86_64.asm">
+    <YASM Include="crypto\aes-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\aesni-sha1-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\aesni-sha1-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\aesni-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\aesni-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\bsaes-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\bsaes-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\cmll-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\cmll-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\ghash-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\ghash-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\md5-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\md5-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\modexp512-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\modexp512-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\rc4-md5-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\rc4-md5-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\rc4-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\rc4-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\sha1-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\sha1-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\sha256-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\sha256-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\sha512-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\sha512-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\vpaes-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\vpaes-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\wp-x86_64.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\wp-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\x86_64-gf2m.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\x86_64-gf2m.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\x86_64-mont.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\x86_64-mont.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\x86_64-mont5.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\x86_64-mont5.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
-    <MASM Include="crypto\x86_64cpuid.asm">
+      <FileType>Document</FileType>
+    </YASM>
+    <YASM Include="crypto\x86_64cpuid.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-    </MASM>
+      <FileType>Document</FileType>
+    </YASM>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -1050,13 +1070,17 @@
     <None Include="libcrypto.def" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="libcrypto.rc">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    <ResourceCompile Include="libopenssl.rc">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|x64'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CRYPTO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -1524,62 +1548,62 @@ if not exist .\ms\uptable.asm (
 mkdir .\ms
 perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
 )
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
+if not exist .\crypto\x86_64cpuid.asm (
+perl ..\crypto\x86_64cpuid.pl nasm .\crypto\x86_64cpuid.asm
 )
 if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
+perl ..\crypto\md5\asm\md5-x86_64.pl nasm .\crypto\md5-x86_64.asm
 )
 if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
+perl ..\crypto\sha\asm\sha1-x86_64.pl nasm .\crypto\sha1-x86_64.asm
 )
 if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha256-x86_64.asm
 )
 if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha512-x86_64.asm
 )
 if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-x86_64.pl nasm .\crypto\rc4-x86_64.asm
 )
 if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl nasm .\crypto\rc4-md5-x86_64.asm
 )
 if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
+perl ..\crypto\aes\asm\aes-x86_64.pl nasm .\crypto\aes-x86_64.asm
 )
 if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
+perl ..\crypto\aes\asm\vpaes-x86_64.pl nasm .\crypto\vpaes-x86_64.asm
 )
 if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
+perl ..\crypto\aes\asm\bsaes-x86_64.pl nasm .\crypto\bsaes-x86_64.asm
 )
 if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
+perl ..\crypto\aes\asm\aesni-x86_64.pl nasm .\crypto\aesni-x86_64.asm
 )
 if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
+perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl nasm .\crypto\aesni-sha1-x86_64.asm
 )
 if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
+perl ..\crypto\camellia\asm\cmll-x86_64.pl nasm .\crypto\cmll-x86_64.asm
 )
 if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
+perl ..\crypto\modes\asm\ghash-x86_64.pl nasm .\crypto\ghash-x86_64.asm
 )
 if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
+perl ..\crypto\bn\asm\x86_64-mont.pl nasm .\crypto\x86_64-mont.asm
 )
 if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
+perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
+perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
 )
 if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
+perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -1898,62 +1922,62 @@ if not exist .\ms\uptable.asm (
 mkdir .\ms
 perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
 )
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
+if not exist .\crypto\x86_64cpuid.asm (
+perl ..\crypto\x86_64cpuid.pl nasm .\crypto\x86_64cpuid.asm
 )
 if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
+perl ..\crypto\md5\asm\md5-x86_64.pl nasm .\crypto\md5-x86_64.asm
 )
 if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
+perl ..\crypto\sha\asm\sha1-x86_64.pl nasm .\crypto\sha1-x86_64.asm
 )
 if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha256-x86_64.asm
 )
 if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha512-x86_64.asm
 )
 if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-x86_64.pl nasm .\crypto\rc4-x86_64.asm
 )
 if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl nasm .\crypto\rc4-md5-x86_64.asm
 )
 if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
+perl ..\crypto\aes\asm\aes-x86_64.pl nasm .\crypto\aes-x86_64.asm
 )
 if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
+perl ..\crypto\aes\asm\vpaes-x86_64.pl nasm .\crypto\vpaes-x86_64.asm
 )
 if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
+perl ..\crypto\aes\asm\bsaes-x86_64.pl nasm .\crypto\bsaes-x86_64.asm
 )
 if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
+perl ..\crypto\aes\asm\aesni-x86_64.pl nasm .\crypto\aesni-x86_64.asm
 )
 if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
+perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl nasm .\crypto\aesni-sha1-x86_64.asm
 )
 if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
+perl ..\crypto\camellia\asm\cmll-x86_64.pl nasm .\crypto\cmll-x86_64.asm
 )
 if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
+perl ..\crypto\modes\asm\ghash-x86_64.pl nasm .\crypto\ghash-x86_64.asm
 )
 if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
+perl ..\crypto\bn\asm\x86_64-mont.pl nasm .\crypto\x86_64-mont.asm
 )
 if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
+perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
+perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
 )
 if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
+perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -2505,62 +2529,62 @@ if not exist .\ms\uptable.asm (
 mkdir .\ms
 perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
 )
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
+if not exist .\crypto\x86_64cpuid.asm (
+perl ..\crypto\x86_64cpuid.pl nasm .\crypto\x86_64cpuid.asm
 )
 if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
+perl ..\crypto\md5\asm\md5-x86_64.pl nasm .\crypto\md5-x86_64.asm
 )
 if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
+perl ..\crypto\sha\asm\sha1-x86_64.pl nasm .\crypto\sha1-x86_64.asm
 )
 if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha256-x86_64.asm
 )
 if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha512-x86_64.asm
 )
 if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-x86_64.pl nasm .\crypto\rc4-x86_64.asm
 )
 if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl nasm .\crypto\rc4-md5-x86_64.asm
 )
 if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
+perl ..\crypto\aes\asm\aes-x86_64.pl nasm .\crypto\aes-x86_64.asm
 )
 if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
+perl ..\crypto\aes\asm\vpaes-x86_64.pl nasm .\crypto\vpaes-x86_64.asm
 )
 if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
+perl ..\crypto\aes\asm\bsaes-x86_64.pl nasm .\crypto\bsaes-x86_64.asm
 )
 if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
+perl ..\crypto\aes\asm\aesni-x86_64.pl nasm .\crypto\aesni-x86_64.asm
 )
 if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
+perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl nasm .\crypto\aesni-sha1-x86_64.asm
 )
 if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
+perl ..\crypto\camellia\asm\cmll-x86_64.pl nasm .\crypto\cmll-x86_64.asm
 )
 if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
+perl ..\crypto\modes\asm\ghash-x86_64.pl nasm .\crypto\ghash-x86_64.asm
 )
 if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
+perl ..\crypto\bn\asm\x86_64-mont.pl nasm .\crypto\x86_64-mont.asm
 )
 if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
+perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
+perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
 )
 if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
+perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -2706,62 +2730,62 @@ if not exist .\ms\uptable.asm (
 mkdir .\ms
 perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
 )
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
+if not exist .\crypto\x86_64cpuid.asm (
+perl ..\crypto\x86_64cpuid.pl nasm .\crypto\x86_64cpuid.asm
 )
 if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
+perl ..\crypto\md5\asm\md5-x86_64.pl nasm .\crypto\md5-x86_64.asm
 )
 if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
+perl ..\crypto\sha\asm\sha1-x86_64.pl nasm .\crypto\sha1-x86_64.asm
 )
 if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha256-x86_64.asm
 )
 if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha512-x86_64.asm
 )
 if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-x86_64.pl nasm .\crypto\rc4-x86_64.asm
 )
 if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl nasm .\crypto\rc4-md5-x86_64.asm
 )
 if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
+perl ..\crypto\aes\asm\aes-x86_64.pl nasm .\crypto\aes-x86_64.asm
 )
 if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
+perl ..\crypto\aes\asm\vpaes-x86_64.pl nasm .\crypto\vpaes-x86_64.asm
 )
 if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
+perl ..\crypto\aes\asm\bsaes-x86_64.pl nasm .\crypto\bsaes-x86_64.asm
 )
 if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
+perl ..\crypto\aes\asm\aesni-x86_64.pl nasm .\crypto\aesni-x86_64.asm
 )
 if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
+perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl nasm .\crypto\aesni-sha1-x86_64.asm
 )
 if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
+perl ..\crypto\camellia\asm\cmll-x86_64.pl nasm .\crypto\cmll-x86_64.asm
 )
 if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
+perl ..\crypto\modes\asm\ghash-x86_64.pl nasm .\crypto\ghash-x86_64.asm
 )
 if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
+perl ..\crypto\bn\asm\x86_64-mont.pl nasm .\crypto\x86_64-mont.asm
 )
 if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
+perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
+perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
 )
 if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
+perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
@@ -3104,62 +3128,62 @@ if not exist .\ms\uptable.asm (
 mkdir .\ms
 perl ..\ms\uplink-x86_64.pl nasm &gt; .\ms\uptable.asm
 )
-if not exist .\crypto\x86_64cpuid.pl (
-perl ..\crypto\x86_64cpuid.pl .\crypto\x86_64cpuid.asm
+if not exist .\crypto\x86_64cpuid.asm (
+perl ..\crypto\x86_64cpuid.pl nasm .\crypto\x86_64cpuid.asm
 )
 if not exist .\crypto\md5-x86_64.asm (
-perl ..\crypto\md5\asm\md5-x86_64.pl .\crypto\md5-x86_64.asm
+perl ..\crypto\md5\asm\md5-x86_64.pl nasm .\crypto\md5-x86_64.asm
 )
 if not exist .\crypto\sha1-x86_64.asm (
-perl ..\crypto\sha\asm\sha1-x86_64.pl .\crypto\sha1-x86_64.asm
+perl ..\crypto\sha\asm\sha1-x86_64.pl nasm .\crypto\sha1-x86_64.asm
 )
 if not exist .\crypto\sha256-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha256-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha256-x86_64.asm
 )
 if not exist .\crypto\sha512-x86_64.asm (
-perl ..\crypto\sha\asm\sha512-x86_64.pl .\crypto\sha512-x86_64.asm
+perl ..\crypto\sha\asm\sha512-x86_64.pl nasm .\crypto\sha512-x86_64.asm
 )
 if not exist .\crypto\rc4-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-x86_64.pl .\crypto\rc4-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-x86_64.pl nasm .\crypto\rc4-x86_64.asm
 )
 if not exist .\crypto\rc4-md5-x86_64.asm (
-perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl .\crypto\rc4-md5-x86_64.asm
+perl ..\crypto\rc4\asm\rc4-md5-x86_64.pl nasm .\crypto\rc4-md5-x86_64.asm
 )
 if not exist .\crypto\aes-x86_64.asm (
-perl ..\crypto\aes\asm\aes-x86_64.pl .\crypto\aes-x86_64.asm
+perl ..\crypto\aes\asm\aes-x86_64.pl nasm .\crypto\aes-x86_64.asm
 )
 if not exist .\crypto\vpaes-x86_64.asm (
-perl ..\crypto\aes\asm\vpaes-x86_64.pl .\crypto\vpaes-x86_64.asm
+perl ..\crypto\aes\asm\vpaes-x86_64.pl nasm .\crypto\vpaes-x86_64.asm
 )
 if not exist .\crypto\bsaes-x86_64.asm (
-perl ..\crypto\aes\asm\bsaes-x86_64.pl .\crypto\bsaes-x86_64.asm
+perl ..\crypto\aes\asm\bsaes-x86_64.pl nasm .\crypto\bsaes-x86_64.asm
 )
 if not exist .\crypto\aesni-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-x86_64.pl .\crypto\aesni-x86_64.asm
+perl ..\crypto\aes\asm\aesni-x86_64.pl nasm .\crypto\aesni-x86_64.asm
 )
 if not exist .\crypto\aesni-sha1-x86_64.asm (
-perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl .\crypto\aesni-sha1-x86_64.asm
+perl ..\crypto\aes\asm\aesni-sha1-x86_64.pl nasm .\crypto\aesni-sha1-x86_64.asm
 )
 if not exist .\crypto\cmll-x86_64.asm (
-perl ..\crypto\camellia\asm\cmll-x86_64.pl .\crypto\cmll-x86_64.asm
+perl ..\crypto\camellia\asm\cmll-x86_64.pl nasm .\crypto\cmll-x86_64.asm
 )
 if not exist .\crypto\ghash-x86_64.asm (
-perl ..\crypto\modes\asm\ghash-x86_64.pl .\crypto\ghash-x86_64.asm
+perl ..\crypto\modes\asm\ghash-x86_64.pl nasm .\crypto\ghash-x86_64.asm
 )
 if not exist .\crypto\x86_64-mont.asm (
-perl ..\crypto\bn\asm\x86_64-mont.pl .\crypto\x86_64-mont.asm
+perl ..\crypto\bn\asm\x86_64-mont.pl nasm .\crypto\x86_64-mont.asm
 )
 if not exist .\crypto\x86_64-mont5.asm (
-perl ..\crypto\bn\asm\x86_64-mont5.pl .\crypto\x86_64-mont5.asm
+perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
-perl ..\crypto\bn\asm\x86_64-gf2m.pl .\crypto\x86_64-gf2m.asm
+perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
 )
 if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl .\crypto\modexp512-x86_64.asm
+perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
-perl ..\crypto\whrlpool\asm\wp-x86_64.pl .\crypto\wp-x86_64.asm
+perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
