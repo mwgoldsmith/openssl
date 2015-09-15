@@ -1,6 +1,9 @@
 %ifidn __OUTPUT_FORMAT__,obj
 section	code	use32 class=code align=64
 %elifidn __OUTPUT_FORMAT__,win32
+%ifndef __YASM_VER__
+$@feat.00 equ 1
+%endif
 section	.text	code align=64
 %else
 section	.text	code
@@ -1000,7 +1003,7 @@ L$_DES_encrypt1_begin:
 	call	L$000pic_point
 L$000pic_point:
 	pop	ebp
-	lea	ebp,[(_DES_SPtrans-L$000pic_point)+ebp]
+	lea	ebp,[(L$des_sptrans-L$000pic_point)+ebp]
 	mov	ecx,DWORD [24+esp]
 	cmp	ebx,0
 	je	NEAR L$001decrypt
@@ -1075,7 +1078,7 @@ L$_DES_encrypt2_begin:
 	call	L$003pic_point
 L$003pic_point:
 	pop	ebp
-	lea	ebp,[(_DES_SPtrans-L$003pic_point)+ebp]
+	lea	ebp,[(L$des_sptrans-L$003pic_point)+ebp]
 	mov	ecx,DWORD [24+esp]
 	cmp	ebx,0
 	je	NEAR L$004decrypt
@@ -1696,6 +1699,7 @@ dd	L$036ej7-L$034PIC_point
 align	64
 align	64
 _DES_SPtrans:
+L$des_sptrans:
 dd	34080768,524288,33554434,34080770
 dd	33554432,526338,524290,33554434
 dd	526338,34080768,34078720,2050

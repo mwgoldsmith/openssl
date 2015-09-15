@@ -846,9 +846,6 @@
     <ClCompile Include="..\crypto\engine\eng_rdrand.c">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
-    <ClCompile Include="..\crypto\engine\eng_rsax.c">
-      <Filter>Source Files\crypto</Filter>
-    </ClCompile>
     <ClCompile Include="..\crypto\engine\eng_table.c">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
@@ -874,9 +871,6 @@
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
     <ClCompile Include="..\crypto\evp\evp_err.c">
-      <Filter>Source Files\crypto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\crypto\evp\evp_fips.c">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
     <ClCompile Include="..\crypto\evp\evp_key.c">
@@ -1764,6 +1758,30 @@
     <ClCompile Include="..\ms\uplink.c">
       <Filter>Source Files\ms</Filter>
     </ClCompile>
+    <ClCompile Include="..\crypto\cms\cms_kari.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crypto\dh\dh_kdf.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crypto\dh\dh_rfc5114.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crypto\ecdh\ech_kdf.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crypto\evp\e_aes_cbc_hmac_sha256.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crypto\modes\wrap128.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crypto\x509v3\v3_scts.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crypto\bn\rsaz_exp.c">
+      <Filter>Source Files\crypto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\e_os.h">
@@ -2083,65 +2101,84 @@
     <YASM Include="ms\uptable.asm">
       <Filter>Source Files\ms</Filter>
     </YASM>
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="crypto\modexp512-x86_64.asm">
+    <YASM Include="crypto\aesni-sha1-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\rc4-md5-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\aesni-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\rc4-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\aes-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\sha1-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\bsaes-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\sha256-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\cmll-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\sha512-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\ghash-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\vpaes-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\md5-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\wp-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\modexp512-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\x86_64cpuid.asm">
+    </YASM>
+    <YASM Include="crypto\rc4-md5-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\x86_64-gf2m.asm">
+    </YASM>
+    <YASM Include="crypto\rc4-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\x86_64-mont.asm">
+    </YASM>
+    <YASM Include="crypto\sha1-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\x86_64-mont5.asm">
+    </YASM>
+    <YASM Include="crypto\sha256-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\aesni-sha1-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\sha512-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\aesni-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\vpaes-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\aes-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\wp-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\bsaes-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\x86_64cpuid.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\cmll-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\x86_64-gf2m.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\ghash-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\x86_64-mont.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
-    <MASM Include="crypto\md5-x86_64.asm">
+    </YASM>
+    <YASM Include="crypto\x86_64-mont5.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
-    </MASM>
+    </YASM>
+    <YASM Include="crypto\rsaz-avx2.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
+    <YASM Include="crypto\aesni-mb-x86_64.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
+    <YASM Include="crypto\aesni-sha256-x86_64.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
+    <YASM Include="crypto\rsaz-x86_64.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
+    <YASM Include="crypto\aesni-gcm-x86_64.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
+    <YASM Include="crypto\sha1-mb-x86_64.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
+    <YASM Include="crypto\sha256-mb-x86_64.asm">
+      <Filter>Source Files\crypto\asm-x64</Filter>
+    </YASM>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />

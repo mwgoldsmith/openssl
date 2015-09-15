@@ -1,6 +1,9 @@
 %ifidn __OUTPUT_FORMAT__,obj
 section	code	use32 class=code align=64
 %elifidn __OUTPUT_FORMAT__,win32
+%ifndef __YASM_VER__
+$@feat.00 equ 1
+%endif
 section	.text	code align=64
 %else
 section	.text	code
@@ -458,4 +461,4 @@ db	54,44,32,67,82,89,80,84,79,71,65,77,83,32,98,121
 db	32,60,97,112,112,114,111,64,111,112,101,110,115,115,108,46
 db	111,114,103,62,0
 segment	.bss
-common	_OPENSSL_ia32cap_P 8
+common	_OPENSSL_ia32cap_P 16

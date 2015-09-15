@@ -191,6 +191,13 @@
     <ClCompile Include="..\crypto\bn\bn_sqrt.c" />
     <ClCompile Include="..\crypto\bn\bn_word.c" />
     <ClCompile Include="..\crypto\bn\bn_x931p.c" />
+    <ClCompile Include="..\crypto\bn\rsaz_exp.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\crypto\buffer\buffer.c" />
     <ClCompile Include="..\crypto\buffer\buf_err.c" />
     <ClCompile Include="..\crypto\buffer\buf_str.c" />
@@ -229,6 +236,7 @@
     <ClCompile Include="..\crypto\cms\cms_err.c" />
     <ClCompile Include="..\crypto\cms\cms_ess.c" />
     <ClCompile Include="..\crypto\cms\cms_io.c" />
+    <ClCompile Include="..\crypto\cms\cms_kari.c" />
     <ClCompile Include="..\crypto\cms\cms_lib.c" />
     <ClCompile Include="..\crypto\cms\cms_pwri.c" />
     <ClCompile Include="..\crypto\cms\cms_sd.c" />
@@ -289,10 +297,12 @@
     <ClCompile Include="..\crypto\dh\dh_depr.c" />
     <ClCompile Include="..\crypto\dh\dh_err.c" />
     <ClCompile Include="..\crypto\dh\dh_gen.c" />
+    <ClCompile Include="..\crypto\dh\dh_kdf.c" />
     <ClCompile Include="..\crypto\dh\dh_key.c" />
     <ClCompile Include="..\crypto\dh\dh_lib.c" />
     <ClCompile Include="..\crypto\dh\dh_pmeth.c" />
     <ClCompile Include="..\crypto\dh\dh_prn.c" />
+    <ClCompile Include="..\crypto\dh\dh_rfc5114.c" />
     <ClCompile Include="..\crypto\dsa\dsa_ameth.c" />
     <ClCompile Include="..\crypto\dsa\dsa_asn1.c" />
     <ClCompile Include="..\crypto\dsa\dsa_depr.c" />
@@ -315,6 +325,7 @@
     <ClCompile Include="..\crypto\dso\dso_vms.c" />
     <ClCompile Include="..\crypto\dso\dso_win32.c" />
     <ClCompile Include="..\crypto\ecdh\ech_err.c" />
+    <ClCompile Include="..\crypto\ecdh\ech_kdf.c" />
     <ClCompile Include="..\crypto\ecdh\ech_key.c" />
     <ClCompile Include="..\crypto\ecdh\ech_lib.c" />
     <ClCompile Include="..\crypto\ecdh\ech_ossl.c" />
@@ -361,7 +372,6 @@
     <ClCompile Include="..\crypto\engine\eng_openssl.c" />
     <ClCompile Include="..\crypto\engine\eng_pkey.c" />
     <ClCompile Include="..\crypto\engine\eng_rdrand.c" />
-    <ClCompile Include="..\crypto\engine\eng_rsax.c" />
     <ClCompile Include="..\crypto\engine\eng_table.c" />
     <ClCompile Include="..\crypto\engine\tb_asnmth.c" />
     <ClCompile Include="..\crypto\engine\tb_cipher.c" />
@@ -390,13 +400,13 @@
     <ClCompile Include="..\crypto\evp\evp_cnf.c" />
     <ClCompile Include="..\crypto\evp\evp_enc.c" />
     <ClCompile Include="..\crypto\evp\evp_err.c" />
-    <ClCompile Include="..\crypto\evp\evp_fips.c" />
     <ClCompile Include="..\crypto\evp\evp_key.c" />
     <ClCompile Include="..\crypto\evp\evp_lib.c" />
     <ClCompile Include="..\crypto\evp\evp_pbe.c" />
     <ClCompile Include="..\crypto\evp\evp_pkey.c" />
     <ClCompile Include="..\crypto\evp\e_aes.c" />
     <ClCompile Include="..\crypto\evp\e_aes_cbc_hmac_sha1.c" />
+    <ClCompile Include="..\crypto\evp\e_aes_cbc_hmac_sha256.c" />
     <ClCompile Include="..\crypto\evp\e_bf.c" />
     <ClCompile Include="..\crypto\evp\e_camellia.c" />
     <ClCompile Include="..\crypto\evp\e_cast.c" />
@@ -466,6 +476,7 @@
     <ClCompile Include="..\crypto\modes\cts128.c" />
     <ClCompile Include="..\crypto\modes\gcm128.c" />
     <ClCompile Include="..\crypto\modes\ofb128.c" />
+    <ClCompile Include="..\crypto\modes\wrap128.c" />
     <ClCompile Include="..\crypto\modes\xts128.c" />
     <ClCompile Include="..\crypto\objects\obj_dat.c" />
     <ClCompile Include="..\crypto\objects\obj_err.c" />
@@ -633,6 +644,7 @@
     <ClCompile Include="..\crypto\x509v3\v3_pmaps.c" />
     <ClCompile Include="..\crypto\x509v3\v3_prn.c" />
     <ClCompile Include="..\crypto\x509v3\v3_purp.c" />
+    <ClCompile Include="..\crypto\x509v3\v3_scts.c" />
     <ClCompile Include="..\crypto\x509v3\v3_skey.c" />
     <ClCompile Include="..\crypto\x509v3\v3_sxnet.c" />
     <ClCompile Include="..\crypto\x509v3\v3_utl.c" />
@@ -761,6 +773,27 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
     </YASM>
+    <YASM Include="crypto\aesni-gcm-x86_64.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </YASM>
+    <YASM Include="crypto\aesni-mb-x86_64.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </YASM>
+    <YASM Include="crypto\aesni-sha256-x86_64.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </YASM>
     <YASM Include="crypto\aesni-x86.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -845,6 +878,20 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
     </YASM>
+    <YASM Include="crypto\rsaz-avx2.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </YASM>
+    <YASM Include="crypto\rsaz-x86_64.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </YASM>
     <YASM Include="crypto\sha1-586.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -852,12 +899,26 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
     </YASM>
+    <YASM Include="crypto\sha1-mb-x86_64.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </YASM>
     <YASM Include="crypto\sha256-586.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|x64'">true</ExcludedFromBuild>
+    </YASM>
+    <YASM Include="crypto\sha256-mb-x86_64.asm">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </YASM>
     <YASM Include="crypto\sha512-586.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -1355,7 +1416,7 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
+SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_USE_APPLINK -I. -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_STATIC_ENGINE"
 if not exist .\crypto\x86cpuid.asm (
 perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
 )
@@ -1605,6 +1666,27 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
+if not exist .\crypto\rsaz-x86_64.asm (
+perl ..\crypto\bn\asm\rsaz-x86_64.pl nasm .\crypto\rsaz-x86_64.asm
+)
+if not exist .\crypto\rsaz-avx2.asm (
+perl ..\crypto\bn\asm\rsaz-avx2.pl nasm .\crypto\rsaz-avx2.asm
+)
+if not exist .\crypto\aesni-mb-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-mb-x86_64.pl nasm .\crypto\aesni-mb-x86_64.asm
+)
+if not exist .\crypto\aesni-sha256-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-sha256-x86_64.pl nasm .\crypto\aesni-sha256-x86_64.asm
+)
+if not exist .\crypto\aesni-gcm-x86_64.asm (
+perl ..\crypto\modes\asm\aesni-gcm-x86_64.pl nasm .\crypto\aesni-gcm-x86_64.asm
+)
+if not exist .\crypto\sha1-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha1-mb-x86_64.pl nasm .\crypto\sha1-mb-x86_64.asm
+)
+if not exist .\crypto\sha256-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha256-mb-x86_64.pl nasm .\crypto\sha256-mb-x86_64.asm
+)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -1632,6 +1714,7 @@ cd $(ProjectDir)
       <ModuleDefinitionFile>.\libcrypto.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
@@ -1729,7 +1812,7 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
+SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_USE_APPLINK -I. -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_STATIC_ENGINE"
 if not exist .\crypto\x86cpuid.asm (
 perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
 )
@@ -1979,6 +2062,27 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
+if not exist .\crypto\rsaz-x86_64.asm (
+perl ..\crypto\bn\asm\rsaz-x86_64.pl nasm .\crypto\rsaz-x86_64.asm
+)
+if not exist .\crypto\rsaz-avx2.asm (
+perl ..\crypto\bn\asm\rsaz-avx2.pl nasm .\crypto\rsaz-avx2.asm
+)
+if not exist .\crypto\aesni-mb-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-mb-x86_64.pl nasm .\crypto\aesni-mb-x86_64.asm
+)
+if not exist .\crypto\aesni-sha256-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-sha256-x86_64.pl nasm .\crypto\aesni-sha256-x86_64.asm
+)
+if not exist .\crypto\aesni-gcm-x86_64.asm (
+perl ..\crypto\modes\asm\aesni-gcm-x86_64.pl nasm .\crypto\aesni-gcm-x86_64.asm
+)
+if not exist .\crypto\sha1-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha1-mb-x86_64.pl nasm .\crypto\sha1-mb-x86_64.asm
+)
+if not exist .\crypto\sha256-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha256-mb-x86_64.pl nasm .\crypto\sha256-mb-x86_64.asm
+)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -2118,7 +2222,7 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
+SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_USE_APPLINK -I. -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_STATIC_ENGINE"
 if not exist .\crypto\x86cpuid.asm (
 perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
 )
@@ -2321,7 +2425,7 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
+SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_USE_APPLINK -I. -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_STATIC_ENGINE"
 if not exist .\crypto\x86cpuid.asm (
 perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
 )
@@ -2586,6 +2690,27 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
+if not exist .\crypto\rsaz-x86_64.asm (
+perl ..\crypto\bn\asm\rsaz-x86_64.pl nasm .\crypto\rsaz-x86_64.asm
+)
+if not exist .\crypto\rsaz-avx2.asm (
+perl ..\crypto\bn\asm\rsaz-avx2.pl nasm .\crypto\rsaz-avx2.asm
+)
+if not exist .\crypto\aesni-mb-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-mb-x86_64.pl nasm .\crypto\aesni-mb-x86_64.asm
+)
+if not exist .\crypto\aesni-sha256-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-sha256-x86_64.pl nasm .\crypto\aesni-sha256-x86_64.asm
+)
+if not exist .\crypto\aesni-gcm-x86_64.asm (
+perl ..\crypto\modes\asm\aesni-gcm-x86_64.pl nasm .\crypto\aesni-gcm-x86_64.asm
+)
+if not exist .\crypto\sha1-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha1-mb-x86_64.pl nasm .\crypto\sha1-mb-x86_64.asm
+)
+if not exist .\crypto\sha256-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha256-mb-x86_64.pl nasm .\crypto\sha256-mb-x86_64.asm
+)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -2787,6 +2912,27 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
+if not exist .\crypto\rsaz-x86_64.asm (
+perl ..\crypto\bn\asm\rsaz-x86_64.pl nasm .\crypto\rsaz-x86_64.asm
+)
+if not exist .\crypto\rsaz-avx2.asm (
+perl ..\crypto\bn\asm\rsaz-avx2.pl nasm .\crypto\rsaz-avx2.asm
+)
+if not exist .\crypto\aesni-mb-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-mb-x86_64.pl nasm .\crypto\aesni-mb-x86_64.asm
+)
+if not exist .\crypto\aesni-sha256-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-sha256-x86_64.pl nasm .\crypto\aesni-sha256-x86_64.asm
+)
+if not exist .\crypto\aesni-gcm-x86_64.asm (
+perl ..\crypto\modes\asm\aesni-gcm-x86_64.pl nasm .\crypto\aesni-gcm-x86_64.asm
+)
+if not exist .\crypto\sha1-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha1-mb-x86_64.pl nasm .\crypto\sha1-mb-x86_64.asm
+)
+if not exist .\crypto\sha256-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha256-mb-x86_64.pl nasm .\crypto\sha256-mb-x86_64.asm
+)
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl
 cd ../
@@ -2826,6 +2972,7 @@ cd $(ProjectDir)
       <ModuleDefinitionFile>.\libcrypto.def</ModuleDefinitionFile>
       <ProfileGuidedDatabase>$(OutDir)\bin\$(TargetName).pgd</ProfileGuidedDatabase>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LargeAddressAware>true</LargeAddressAware>
     </Link>
     <PostBuildEvent>
       <Command>mkdir $(OutDir)\include
@@ -2923,7 +3070,7 @@ copy ..\ssl\ssl3.h ..\include\openssl
 copy ..\ssl\ssl23.h ..\include\openssl
 copy ..\ssl\tls1.h ..\include\openssl
 )
-SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_DYNAMIC_ENGINE"
+SET FLAGC="/MT /Ox /O2 /Ob2 -DOPENSSL_THREADS  -DDSO_WIN32 -W3 -Gs0 -GF -Gy -nologo -DOPENSSL_SYSNAME_WIN32 -DWIN32_LEAN_AND_MEAN -DL_ENDIAN -D_CRT_SECURE_NO_DEPRECATE -DOPENSSL_BN_ASM_PART_WORDS -DOPENSSL_IA32_SSE2 -DOPENSSL_BN_ASM_MONT -DOPENSSL_BN_ASM_GF2m -DSHA1_ASM -DSHA256_ASM -DSHA512_ASM -DMD5_ASM -DRMD160_ASM -DAES_ASM -DVPAES_ASM -DWHIRLPOOL_ASM -DGHASH_ASM -DOPENSSL_USE_APPLINK -I. -DOPENSSL_NO_RC5 -DOPENSSL_NO_MD2 -DOPENSSL_NO_KRB5 -DOPENSSL_NO_JPAKE -DOPENSSL_NO_STATIC_ENGINE"
 if not exist .\crypto\x86cpuid.asm (
 perl ..\crypto\x86cpuid.pl win32n %FLAGC% &gt;.\crypto\x86cpuid.asm
 )
@@ -3184,6 +3331,27 @@ perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
+)
+if not exist .\crypto\rsaz-x86_64.asm (
+perl ..\crypto\bn\asm\rsaz-x86_64.pl nasm .\crypto\rsaz-x86_64.asm
+)
+if not exist .\crypto\rsaz-avx2.asm (
+perl ..\crypto\bn\asm\rsaz-avx2.pl nasm .\crypto\rsaz-avx2.asm
+)
+if not exist .\crypto\aesni-mb-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-mb-x86_64.pl nasm .\crypto\aesni-mb-x86_64.asm
+)
+if not exist .\crypto\aesni-sha256-x86_64.asm (
+perl ..\crypto\aes\asm\aesni-sha256-x86_64.pl nasm .\crypto\aesni-sha256-x86_64.asm
+)
+if not exist .\crypto\aesni-gcm-x86_64.asm (
+perl ..\crypto\modes\asm\aesni-gcm-x86_64.pl nasm .\crypto\aesni-gcm-x86_64.asm
+)
+if not exist .\crypto\sha1-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha1-mb-x86_64.pl nasm .\crypto\sha1-mb-x86_64.asm
+)
+if not exist .\crypto\sha256-mb-x86_64.asm (
+perl ..\crypto\sha\asm\sha256-mb-x86_64.pl nasm .\crypto\sha256-mb-x86_64.asm
 )
 if exist $(OutDir)\include\openssl (
 rd /s /q $(OutDir)\include\openssl

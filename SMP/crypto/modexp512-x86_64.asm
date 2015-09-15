@@ -1,5 +1,7 @@
 default	rel
 %define XMMWORD
+%define YMMWORD
+%define ZMMWORD
 section	.text code align=64
 
 
@@ -436,7 +438,7 @@ mont_reduce:
 	add	rsi,64
 	lea	rcx,[296+rsp]
 
-	call	MULADD_128x512			
+	call	MULADD_128x512
 
 	mov	rax,QWORD[384+rsp]
 
@@ -480,7 +482,7 @@ mont_reduce:
 	mov	r8,QWORD[rcx]
 	mov	r9,QWORD[8+rcx]
 
-	call	MULADD_128x512			
+	call	MULADD_128x512
 
 
 
@@ -1840,7 +1842,7 @@ $L$in_prologue:
 	mov	rdi,QWORD[40+r9]
 	mov	rsi,r8
 	mov	ecx,154
-	DD	0xa548f3fc		
+	DD	0xa548f3fc
 
 	mov	rsi,r9
 	xor	rcx,rcx
