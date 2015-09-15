@@ -2614,6 +2614,7 @@ EXPORTS
     X509V3_set_nconf
     X509V3_string_free
     X509_ALGORS_it
+    X509_ALGOR_cmp
     X509_ALGOR_dup
     X509_ALGOR_free
     X509_ALGOR_get0
