@@ -10,9 +10,6 @@
     <Filter Include="Resource Files">
       <UniqueIdentifier>{e05e69ea-955c-4c2c-83f8-ff30c0007387}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ms">
-      <UniqueIdentifier>{8f8da442-5c8b-48e0-8d50-d1b27e2000a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\crypto">
       <UniqueIdentifier>{a9af6645-3d0a-4eda-b12d-eae3f6edb2b9}</UniqueIdentifier>
     </Filter>
@@ -31,20 +28,14 @@
     <Filter Include="Source Files\crypto\asm">
       <UniqueIdentifier>{f48f2d20-35ea-47e8-87cb-99044e436abb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ssl">
-      <UniqueIdentifier>{f9f172d4-6c40-4dff-b547-98dd12d3377d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\include\ssl">
-      <UniqueIdentifier>{e73c68f7-13f7-4b80-98ce-f9fa1309dea8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\crypto\asm-x64">
       <UniqueIdentifier>{2562acbc-dde6-4118-a14c-c8a913613bcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ms">
+      <UniqueIdentifier>{38b6371c-fb62-4442-9aba-0938557301b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\ms\applink.c">
-      <Filter>Source Files\ms</Filter>
-    </ClCompile>
     <ClCompile Include="..\crypto\buffer\buf_str.c">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
@@ -1752,147 +1743,6 @@
     <ClCompile Include="..\crypto\asn1\x_val.c">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
-    <ClCompile Include="..\ssl\d1_meth.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\d1_pkt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\d1_srtp.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\d1_srvr.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\kssl.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s2_clnt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s2_enc.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s2_lib.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s2_meth.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s2_pkt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s2_srvr.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_both.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_cbc.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_clnt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_enc.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_lib.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_meth.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_pkt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s3_srvr.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s23_clnt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s23_lib.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s23_meth.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s23_pkt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\s23_srvr.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_algs.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_asn1.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_cert.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_ciph.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_err.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_err2.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_lib.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_rsa.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_sess.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_stat.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_txt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\t1_clnt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\t1_enc.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\t1_lib.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\t1_meth.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\t1_reneg.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\t1_srvr.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\tls_srp.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\bio_ssl.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\d1_both.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\d1_clnt.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\d1_enc.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\d1_lib.c">
-      <Filter>Source Files\ssl</Filter>
-    </ClCompile>
     <ClCompile Include="..\crypto\des\fcrypt_b.c">
       <Filter>Source Files\crypto</Filter>
     </ClCompile>
@@ -1913,9 +1763,6 @@
     </ClCompile>
     <ClCompile Include="..\ms\uplink.c">
       <Filter>Source Files\ms</Filter>
-    </ClCompile>
-    <ClCompile Include="..\ssl\ssl_utst.c">
-      <Filter>Source Files\ssl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2162,44 +2009,9 @@
     <ClInclude Include="..\include\openssl\x509v3.h">
       <Filter>Header Files\include\openssl</Filter>
     </ClInclude>
-    <ClInclude Include="..\ssl\srtp.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\ssl.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\ssl_locl.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\ssl2.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\ssl3.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\ssl23.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\tls1.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\dtls1.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\kssl.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ssl\kssl_lcl.h">
-      <Filter>Header Files\include\ssl</Filter>
-    </ClInclude>
     <ClInclude Include="crypto\opensslconf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="openssl.def">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <YASM Include="crypto\x86cpuid.asm">
@@ -2266,13 +2078,8 @@
       <Filter>Source Files\crypto\asm</Filter>
     </YASM>
     <YASM Include="ms\uptable.asm">
-      <Filter>Source Files\crypto\asm-x64</Filter>
+      <Filter>Source Files\ms</Filter>
     </YASM>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="version32.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="crypto\modexp512-x86_64.asm">
@@ -2335,5 +2142,15 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libcrypto.def">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="libcrypto.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
