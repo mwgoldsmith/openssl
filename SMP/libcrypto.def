@@ -1425,6 +1425,7 @@ EXPORTS
     EVP_PKEY_asn1_new
     EVP_PKEY_asn1_set_ctrl
     EVP_PKEY_asn1_set_free
+    EVP_PKEY_asn1_set_item
     EVP_PKEY_asn1_set_param
     EVP_PKEY_asn1_set_private
     EVP_PKEY_asn1_set_public
