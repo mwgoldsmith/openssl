@@ -107,6 +107,7 @@ EXPORTS
     ASN1_STRING_TABLE_add
     ASN1_STRING_TABLE_cleanup
     ASN1_STRING_TABLE_get
+    ASN1_STRING_clear_free
     ASN1_STRING_cmp
     ASN1_STRING_copy
     ASN1_STRING_data

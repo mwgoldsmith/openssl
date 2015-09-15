@@ -2122,9 +2122,6 @@
     <YASM Include="crypto\md5-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
     </YASM>
-    <YASM Include="crypto\modexp512-x86_64.asm">
-      <Filter>Source Files\crypto\asm-x64</Filter>
-    </YASM>
     <YASM Include="crypto\rc4-md5-x86_64.asm">
       <Filter>Source Files\crypto\asm-x64</Filter>
     </YASM>

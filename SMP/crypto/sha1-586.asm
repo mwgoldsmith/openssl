@@ -1415,7 +1415,7 @@ L$shaext_shortcut:
 	mov	ecx,DWORD [28+esp]
 	sub	esp,32
 	movdqu	xmm0,[edi]
-	movd	xmm1,[16+edi]
+	movd	xmm1,DWORD [16+edi]
 	and	esp,-32
 	movdqa	xmm3,[80+ebp]
 	movdqu	xmm4,[esi]

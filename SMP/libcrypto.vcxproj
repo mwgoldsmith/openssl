@@ -1027,14 +1027,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
       <FileType>Document</FileType>
     </YASM>
-    <YASM Include="crypto\modexp512-x86_64.asm">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseLTO|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDLL|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugDLL|Win32'">true</ExcludedFromBuild>
-      <FileType>Document</FileType>
-    </YASM>
     <YASM Include="crypto\rc4-md5-x86_64.asm">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -1660,9 +1652,6 @@ perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 if not exist .\crypto\x86_64-gf2m.asm (
 perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
 )
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
-)
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
@@ -2055,9 +2044,6 @@ perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
 perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
@@ -2684,9 +2670,6 @@ perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 if not exist .\crypto\x86_64-gf2m.asm (
 perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
 )
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
-)
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
 )
@@ -2905,9 +2888,6 @@ perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
 perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
@@ -3325,9 +3305,6 @@ perl ..\crypto\bn\asm\x86_64-mont5.pl nasm .\crypto\x86_64-mont5.asm
 )
 if not exist .\crypto\x86_64-gf2m.asm (
 perl ..\crypto\bn\asm\x86_64-gf2m.pl nasm .\crypto\x86_64-gf2m.asm
-)
-if not exist .\crypto\modexp512-x86_64.asm (
-perl ..\crypto\bn\asm\modexp512-x86_64.pl nasm .\crypto\modexp512-x86_64.asm
 )
 if not exist .\crypto\wp-x86_64.asm (
 perl ..\crypto\whrlpool\asm\wp-x86_64.pl nasm .\crypto\wp-x86_64.asm
