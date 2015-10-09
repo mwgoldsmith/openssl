@@ -84,6 +84,9 @@
  * chipsets might be a good deal more favourable to the GMP version (eg. PPC).
  * Feedback welcome. */
 
+#ifndef OPENSSL_NO_HW
+# ifndef OPENSSL_NO_GMP
+
 #include <stdio.h>
 #include <string.h>
 #include <openssl/crypto.h>
@@ -93,9 +96,6 @@
 # include <openssl/rsa.h>
 #endif
 #include <openssl/bn.h>
-
-#ifndef OPENSSL_NO_HW
-# ifndef OPENSSL_NO_GMP
 
 #  include <gmp.h>
 

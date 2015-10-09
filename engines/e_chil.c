@@ -58,6 +58,9 @@
  *
  */
 
+#ifndef OPENSSL_NO_HW
+# ifndef OPENSSL_NO_HW_CHIL
+
 #include <stdio.h>
 #include <string.h>
 #include <openssl/crypto.h>
@@ -73,9 +76,6 @@
 # include <openssl/dh.h>
 #endif
 #include <openssl/bn.h>
-
-#ifndef OPENSSL_NO_HW
-# ifndef OPENSSL_NO_HW_CHIL
 
 /*-
  * Attribution notice: nCipher have said several times that it's OK for

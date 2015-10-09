@@ -52,6 +52,9 @@
  *
  */
 
+#ifndef OPENSSL_NO_HW
+# ifndef OPENSSL_NO_HW_AEP
+
 #include <stdio.h>
 #include <openssl/bn.h>
 #include <string.h>
@@ -86,8 +89,6 @@ extern int GetThreadID(void);
 # include <openssl/dh.h>
 #endif
 
-#ifndef OPENSSL_NO_HW
-# ifndef OPENSSL_NO_HW_AEP
 #  ifdef FLAT_INC
 #   include "aep.h"
 #  else

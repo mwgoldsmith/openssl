@@ -53,6 +53,9 @@
  *
  */
 
+#ifndef OPENSSL_NO_HW
+# ifndef OPENSSL_NO_HW_4758_CCA
+
 #include <stdio.h>
 #include <string.h>
 #include <openssl/crypto.h>
@@ -65,9 +68,6 @@
 # include <openssl/rsa.h>
 #endif
 #include <openssl/bn.h>
-
-#ifndef OPENSSL_NO_HW
-# ifndef OPENSSL_NO_HW_4758_CCA
 
 #  ifdef FLAT_INC
 #   include "hw_4758_cca.h"

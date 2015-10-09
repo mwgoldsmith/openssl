@@ -57,6 +57,9 @@
  *
  */
 
+#ifndef OPENSSL_NO_HW
+# ifndef OPENSSL_NO_HW_UBSEC
+
 #include <stdio.h>
 #include <string.h>
 #include <openssl/crypto.h>
@@ -73,9 +76,6 @@
 # include <openssl/dh.h>
 #endif
 #include <openssl/bn.h>
-
-#ifndef OPENSSL_NO_HW
-# ifndef OPENSSL_NO_HW_UBSEC
 
 #  ifdef FLAT_INC
 #   include "hw_ubsec.h"

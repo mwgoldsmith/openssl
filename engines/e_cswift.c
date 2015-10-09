@@ -57,6 +57,9 @@
  *
  */
 
+#ifndef OPENSSL_NO_HW
+# ifndef OPENSSL_NO_HW_CSWIFT
+
 #include <stdio.h>
 #include <string.h>
 #include <openssl/crypto.h>
@@ -74,9 +77,6 @@
 #endif
 #include <openssl/rand.h>
 #include <openssl/bn.h>
-
-#ifndef OPENSSL_NO_HW
-# ifndef OPENSSL_NO_HW_CSWIFT
 
 /*
  * Attribution notice: Rainbow have generously allowed me to reproduce the

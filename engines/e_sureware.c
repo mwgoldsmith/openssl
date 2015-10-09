@@ -51,6 +51,9 @@
 *        SUCH DAMAGE.                                                                  *
 ====================================================================*/
 
+#ifndef OPENSSL_NO_HW
+# ifndef OPENSSL_NO_HW_SUREWARE
+
 #include <stdio.h>
 #include <string.h>
 #include <openssl/crypto.h>
@@ -68,9 +71,6 @@
 # include <openssl/dh.h>
 #endif
 #include <openssl/bn.h>
-
-#ifndef OPENSSL_NO_HW
-# ifndef OPENSSL_NO_HW_SUREWARE
 
 #  ifdef FLAT_INC
 #   include "sureware.h"
